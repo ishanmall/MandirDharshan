@@ -1,4 +1,3 @@
-/* App.css */
 :root {
   --bg-base: #f8fafc;
   --text-main: #0f172a;
@@ -21,11 +20,7 @@
   --nav-bg: #1e293b;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
   background-color: var(--bg-base);
@@ -35,7 +30,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Navbar (2.5D Flat Layer) */
+/* 2.5D Navbar */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -54,18 +49,6 @@ body {
   color: var(--accent);
   text-transform: uppercase;
   letter-spacing: 1px;
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-}
-
-.nav-links a {
-  color: var(--text-main);
-  text-decoration: none;
-  font-weight: 700;
 }
 
 .theme-btn {
@@ -90,16 +73,13 @@ body {
   padding: 6rem 2rem 4rem;
 }
 
-/* 2.5D Text Effect (Solid layered shadows) */
 .text-2-5d {
   font-size: clamp(2.5rem, 6vw, 4.5rem);
   font-weight: 900;
   letter-spacing: 3px;
   color: var(--bg-base);
   -webkit-text-stroke: 2px var(--text-main);
-  text-shadow: 
-    4px 4px 0px var(--accent),
-    8px 8px 0px var(--shadow-color);
+  text-shadow: 4px 4px 0px var(--accent), 8px 8px 0px var(--shadow-color);
   margin-bottom: 1rem;
 }
 
@@ -141,10 +121,7 @@ body {
 }
 
 /* Gallery Grid */
-.gallery-section {
-  padding: 2rem 5% 5rem;
-}
-
+.gallery-section { padding: 2rem 5% 5rem; }
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -153,7 +130,7 @@ body {
   margin: 0 auto;
 }
 
-/* 2.5D Card Design (No perspective/rotate, just sharp XY movement) */
+/* 2.5D Card Design */
 .card {
   background: var(--card-bg);
   border: 3px solid var(--border-color);
@@ -176,32 +153,18 @@ body {
   height: 220px;
   object-fit: cover;
   border-bottom: 3px solid var(--border-color);
+  background: #cbd5e1;
 }
 
-.card-content {
-  padding: 1.2rem;
-}
-
+.card-content { padding: 1.2rem; }
 .card-title {
   font-size: 1.25rem;
   font-weight: 800;
   color: var(--text-main);
   margin-bottom: 0.5rem;
 }
-
-.card-location {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--text-muted);
-}
-
-.no-results {
-  text-align: center;
-  font-size: 1.5rem;
-  font-weight: 700;
-  grid-column: 1 / -1;
-  padding: 3rem;
-}
+.card-location { font-size: 0.95rem; font-weight: 600; color: var(--text-muted); }
+.no-results { text-align: center; font-size: 1.5rem; font-weight: 700; grid-column: 1 / -1; padding: 3rem; }
 
 /* 2.5D Modal */
 .modal-overlay {
@@ -231,19 +194,19 @@ body {
 
 @media (max-width: 768px) {
   .modal-dialog { flex-direction: column; max-height: 85vh; overflow-y: auto; }
-  .text-2-5d { -webkit-text-stroke: 1px var(--text-main); }
 }
 
 .modal-image-container {
   flex: 1;
   border-right: 4px solid var(--border-color);
+  background: #000;
 }
 
 .modal-image-container img {
   width: 100%;
   height: 100%;
   max-height: 60vh;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 
@@ -254,18 +217,8 @@ body {
   flex-direction: column;
 }
 
-.modal-info h2 {
-  font-size: 2rem;
-  font-weight: 900;
-  margin-bottom: 0.5rem;
-}
-
-.modal-location {
-  font-weight: 700;
-  color: var(--accent);
-  margin-bottom: 1.5rem;
-}
-
+.modal-info h2 { font-size: 2rem; font-weight: 900; margin-bottom: 0.5rem; }
+.modal-location { font-weight: 700; color: var(--accent); margin-bottom: 1.5rem; }
 .modal-desc-box {
   background: var(--bg-base);
   border: 2px solid var(--border-color);
@@ -292,7 +245,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.2s;
 }
 
 .close-btn:active {

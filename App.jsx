@@ -1,7 +1,5 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import './App.css';
+const { useState, useEffect, useMemo } = React;
 
-// Temple Database
 const templeData = [
     { file: "asthabhujadevi.jpg", name: "Ashtabhuja Devi", loc: "Vindhyachal, Uttar Pradesh", desc: "A prominent temple dedicated to Goddess Ashtabhuja, situated on the scenic Vindhya mountain range." },
     { file: "vindhyavasinidevi.jpg", name: "Vindhyavasini Devi", loc: "Vindhyachal, Uttar Pradesh", desc: "One of the most revered Shakti Peethas situated on the banks of the river Ganges." },
@@ -83,113 +81,93 @@ const templeData = [
 ];
 
 function App() {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedTemple, setSelectedTemple] = useState(null);
-  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light');
+    const [searchTerm, setSearchTerm] = useState('');
+    const [selectedTemple, setSelectedTemple] = useState(null);
+    const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'dark');
 
-  // Handle Theme Switching
-  useEffect(() => {
-    document.body.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-  }, [theme]);
+    useEffect(() => {
+        document.body.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+    }, [theme]);
 
-  // Handle body scroll locking for modal
-  useEffect(() => {
-    if (selectedTemple) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-  }, [selectedTemple]);
+    useEffect(() => {
+        document.body.style.overflow = selectedTemple ? 'hidden' : 'auto';
+    }, [selectedTemple]);
 
-  const toggleTheme = () => {
-    setTheme(prev => prev === 'light' ? 'dark' : 'light');
-  };
+    const toggleTheme = () => setTheme(prev => prev === 'light' ? 'dark' : 'light');
 
-  // Real-time Search Filtering
-  const filteredTemples = useMemo(() => {
-    const lowerSearch = searchTerm.toLowerCase();
-    return templeData.filter(temple =>
-      temple.name.toLowerCase().includes(lowerSearch) ||
-      temple.loc.toLowerCase().includes(lowerSearch) ||
-      temple.desc.toLowerCase().includes(lowerSearch)
-    );
-  }, [searchTerm]);
+    const filteredTemples = useMemo(() => {
+        const term = searchTerm.toLowerCase();
+        return templeData.filter(temple =>
+            temple.name.toLowerCase().includes(term) ||
+            temple.loc.toLowerCase().includes(term) ||
+            temple.desc.toLowerCase().includes(term)
+        );
+    }, [searchTerm]);
 
-  return (
-    <div className="app-container">
-      {/* Navbar */}
-      <nav className="navbar">
-        <div className="nav-brand">🛕 Mandir Darshan</div>
-        <div className="nav-links">
-          <a href="#gallery">Temples</a>
-          <button className="theme-btn" onClick={toggleTheme} aria-label="Toggle Theme">
-            {theme === 'dark' ? '☀️' : '🌙'}
-          </button>
-        </div>
-      </nav>
+    return (
+        <div className="app-container">
+            <nav className="navbar">
+                <div className="nav-brand">🛕 Mandir Darshan</div>
+                <button className="theme-btn" onClick={toggleTheme}>
+                    {theme === 'dark' ? '☀️' : '🌙'}
+                </button>
+            </nav>
 
-      {/* Hero Section */}
-      <header className="hero">
-        <h1 className="text-2-5d">MANDIR DARSHAN</h1>
-        <p className="subtitle">Explore the sacred temples of India</p>
-        
-        <div className="search-container">
-          <span>🔍</span>
-          <input 
-            type="text" 
-            className="search-input"
-            placeholder="Search temples, deities, locations..." 
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-        </div>
-      </header>
-
-      {/* Gallery */}
-      <main id="gallery" className="gallery-section">
-        <div className="gallery-grid">
-          {filteredTemples.length > 0 ? (
-            filteredTemples.map((temple, index) => (
-              <div 
-                key={index} 
-                className="card"
-                onClick={() => setSelectedTemple(temple)}
-              >
-                {/* Ensure your images are inside the "public" folder of your React app */}
-                <img src={`public/${temple.file}`} alt={temple.name} loading="lazy" />
-                <div className="card-content">
-                  <h3 className="card-title">{temple.name}</h3>
-                  <p className="card-location">📍 {temple.loc}</p>
+            <header className="hero">
+                <h1 className="text-2-5d">MANDIR DARSHAN</h1>
+                <p className="subtitle">Explore the sacred temples of India</p>
+                
+                <div className="search-container">
+                    <span>🔍</span>
+                    <input 
+                        type="text" 
+                        className="search-input"
+                        placeholder="Search temples, deities, locations..." 
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
                 </div>
-              </div>
-            ))
-          ) : (
-            <div className="no-results">No temples found matching your search.</div>
-          )}
-        </div>
-      </main>
+            </header>
 
-      {/* 2.5D Modal */}
-      {selectedTemple && (
-        <div className="modal-overlay" onClick={() => setSelectedTemple(null)}>
-          <div className="modal-dialog" onClick={(e) => e.stopPropagation()}>
-            <button className="close-btn" onClick={() => setSelectedTemple(null)}>×</button>
-            <div className="modal-image-container">
-              <img src={`public/${selectedTemple.file}`} alt={selectedTemple.name} />
-            </div>
-            <div className="modal-info">
-              <h2>{selectedTemple.name}</h2>
-              <p className="modal-location">📍 {selectedTemple.loc}</p>
-              <div className="modal-desc-box">
-                <p>{selectedTemple.desc}</p>
-              </div>
-            </div>
-          </div>
+            <main className="gallery-section">
+                <div className="gallery-grid">
+                    {filteredTemples.length > 0 ? (
+                        filteredTemples.map((temple, idx) => (
+                            <div key={idx} className="card" onClick={() => setSelectedTemple(temple)}>
+                                <img src={`public/${temple.file}`} alt={temple.name} loading="lazy" />
+                                <div className="card-content">
+                                    <h3 className="card-title">{temple.name}</h3>
+                                    <p className="card-location">📍 {temple.loc}</p>
+                                </div>
+                            </div>
+                        ))
+                    ) : (
+                        <div className="no-results">No temples found matching your search.</div>
+                    )}
+                </div>
+            </main>
+
+            {selectedTemple && (
+                <div className="modal-overlay" onClick={() => setSelectedTemple(null)}>
+                    <div className="modal-dialog" onClick={(e) => e.stopPropagation()}>
+                        <button className="close-btn" onClick={() => setSelectedTemple(null)}>×</button>
+                        <div className="modal-image-container">
+                            <img src={`public/${selectedTemple.file}`} alt={selectedTemple.name} />
+                        </div>
+                        <div className="modal-info">
+                            <h2>{selectedTemple.name}</h2>
+                            <p className="modal-location">📍 {selectedTemple.loc}</p>
+                            <div className="modal-desc-box">
+                                <p>{selectedTemple.desc}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
-      )}
-    </div>
-  );
+    );
 }
 
-export default App;
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
