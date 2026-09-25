@@ -17,7 +17,7 @@
   --border-color: #334155;
   --shadow-color: #000000;
   --accent: #f97316;
-  --nav-bg: #1e293b;
+  --nav-bg: #1e293b
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -250,4 +250,31 @@ body {
 .close-btn:active {
   transform: translate(2px, 2px);
   box-shadow: 1px 1px 0px var(--shadow-color);
+}
+
+/* Footer Disclaimer */
+.footer-disclaimer {
+  text-align: center;
+  padding: 2.5rem 2rem;
+  margin-top: 3rem;
+  background-color: var(--nav-bg);
+  border-top: 3px solid var(--border-color);
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.6;
+  font-weight: 600;
+  box-shadow: inset 0px 4px 0px rgba(0,0,0,0.05);
+}
+
+.footer-disclaimer p {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.footer-highlight {
+  color: var(--accent);
+  font-weight: 800;
+  font-size: 1.1rem;
+  display: block;
+  margin-bottom: 8px;
 }
