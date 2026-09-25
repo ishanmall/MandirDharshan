@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mandir Darshan | Divine India</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="dark">
+    <!-- Top Navbar -->
+    <nav class="navbar glass">
+        <div class="nav-brand">🛕 Mandir Darshan</div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#gallery">Temples</a>
+            <a href="#">About</a>
+            <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">☀️</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <!-- Floating Parallax Elements -->
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+
+        <div class="hero-content">
+            <h1 class="text-3d slide-up">MANDIR DARSHAN</h1>
+            <p class="subtitle slide-up delay-1">Explore the sacred temples of India</p>
+            
+            <!-- Instant Search Bar -->
+            <div class="search-container glass slide-up delay-2">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="searchInput" placeholder="Search temples, deities, locations...">
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <section id="gallery" class="gallery-section">
+            <div id="no-results" class="no-results hidden">No temples found matching your search.</div>
+            <div id="gallery-grid" class="gallery-grid"></div>
+        </section>
+    </main>
+
+    <!-- 3D Glass Modal -->
+    <div id="imageModal" class="modal">
+        <div class="modal-dialog glass-modal">
+            <span class="close-btn">&times;</span>
+            <div class="modal-layout">
+                <div class="modal-image-container">
+                    <img id="expandedImg" class="modal-content" alt="Temple Image">
+                </div>
+                <div class="modal-info">
+                    <h2 id="modalTitle"></h2>
+                    <p class="modal-location">📍 <span id="modalLocation"></span></p>
+                    <div class="modal-desc-box dimensional">
+                        <p id="modalDesc"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
