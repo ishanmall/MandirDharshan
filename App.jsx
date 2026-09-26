@@ -1,7 +1,6 @@
 const { useState, useEffect, useMemo } = React;
 
 const templeData = [
-    // ---------------- PREVIOUS 77 TEMPLES ----------------
     { file: "asthabhujadevi.jpg", name: "Ashtabhuja Devi", loc: "Vindhyachal, Uttar Pradesh", desc: "A prominent temple dedicated to Goddess Ashtabhuja, situated on the scenic Vindhya mountain range. | यह विंध्य पर्वत पर स्थित देवी अष्टभुजा को समर्पित एक प्रमुख मंदिर है।" },
     { file: "vindhyavasinidevi.jpg", name: "Vindhyavasini Devi", loc: "Vindhyachal, Uttar Pradesh", desc: "One of the most revered Shakti Peethas situated on the banks of the river Ganges. | गंगा के तट पर स्थित सबसे पूजनीय शक्तिपीठों में से एक।" },
     { file: "vaishno devi.jpg", name: "Vaishno Devi", loc: "Katra, Jammu and Kashmir", desc: "A holy cave shrine dedicated to Shakti, located in the Trikuta Mountains. | त्रिकुटा पर्वतों में स्थित शक्ति को समर्पित एक पवित्र गुफा मंदिर।" },
@@ -16,7 +15,7 @@ const templeData = [
     { file: "ratanawali.jpg", name: "Ratnavali Shakti Peeth", loc: "Hooghly, West Bengal", desc: "A sacred Shakti Peeth where the right shoulder of Devi Sati is believed to have fallen. | पवित्र शक्तिपीठ जहां देवी सती का दाहिना कंधा गिरा था।" },
     { file: "janasthan.jpg", name: "Janasthan Shakti Peeth", loc: "Nashik, Maharashtra", desc: "Also known as Bhramari, it is where the chin of Devi Sati fell. | इसे भ्रामरी भी कहा जाता है, जहां देवी सती की ठुड्डी गिरी थी।" },
     { file: "mithila.jpg", name: "Mithila Shakti Peeth", loc: "Janakpur, Nepal border", desc: "A revered site where the left shoulder of Sati fell, represented by Goddess Uma. | जहां सती का बायां कंधा गिरा था, यहां देवी उमा की पूजा होती है।" },
-    { file: "mahamaya.jpg", name: "Mahamaya Temple", loc: "Amarnath, Jammu and Kashmir", desc: "A powerful shrine dedicated to Goddess Mahamaya. | देवी महामाया को समर्पित एक अत्यंत शक्तिशाली मंदिर।" },
+    { file: "mahamaya.jpg", name: "Amarnath Cave Temple", loc: "Amarnath, Jammu and Kashmir", desc: "A highly revered Hindu cave shrine famous for the naturally occurring ice Shiva Lingam. | प्राकृतिक रूप से बनने वाले बर्फ के शिवलिंग के लिए प्रसिद्ध एक अत्यंत पवित्र गुफा मंदिर।" },
     { file: "indrakshi.jpg", name: "Indrakshi Shakti Peeth", loc: "Nainativu, Sri Lanka", desc: "The site where the anklets of Devi Sati fell. | वह स्थान जहां देवी सती की पायल गिरी थी।" },
     { file: "jayanti.jpg", name: "Jayanti Shakti Peeth", loc: "Baurbhag, Meghalaya", desc: "Dedicated to Goddess Jayanti, where the left thigh of Sati fell. | देवी जयंती को समर्पित, जहां सती की बाईं जांघ गिरी थी।" },
     { file: "panchsagar.jpg", name: "Panchsagar Shakti Peeth", loc: "Varanasi, Uttar Pradesh", desc: "Where the lower jaw of Sati is believed to have fallen. | ऐसा माना जाता है कि यहां सती का निचला जबड़ा गिरा था।" },
@@ -69,8 +68,6 @@ const templeData = [
     { file: "mankameshwarmahadev.jpg", name: "Mankameshwar Mandir", loc: "Agra, Uttar Pradesh", desc: "An ancient temple dedicated to Lord Shiva, believed to fulfill all wishes. | शिव का प्राचीन मंदिर जिसके बारे में माना जाता है कि यहां सभी मनोकामनाएं पूरी होती हैं।" },
     { file: "anandeshwarmahadev.jpg", name: "Anandeshwar Mahadev", loc: "Kanpur, Uttar Pradesh", desc: "A prominent Shiva temple located on the banks of the river Ganga. | गंगा नदी के तट पर स्थित एक प्रमुख शिव मंदिर।" },
     { file: "kalikhoh.jpg", name: "Kali Khoh Mata", loc: "Vindhyachal, Uttar Pradesh", desc: "A sacred cave temple dedicated to Goddess Kali, nestled in the Vindhya mountains. | विंध्य पर्वतों में स्थित देवी काली का एक पवित्र गुफा मंदिर।" },
-
-    // ---------------- NEW 51 TEMPLES ----------------
     { file: "ISKCON Vrindavan.jpg", name: "ISKCON Vrindavan", loc: "Vrindavan, Uttar Pradesh", desc: "A major ISKCON temple dedicated to Lord Krishna and Balarama. | भगवान कृष्ण और बलराम को समर्पित एक प्रमुख इस्कॉन मंदिर।" },
     { file: "Ramanathaswamy.jpg", name: "Ramanathaswamy", loc: "Rameswaram, Tamil Nadu", desc: "A renowned Jyotirlinga temple famous for its grand corridors. | अपने भव्य गलियारों के लिए प्रसिद्ध एक प्रख्यात ज्योतिर्लिंग मंदिर।" },
     { file: "nageshwarnath.jpg", name: "Nageshwarnath", loc: "Ayodhya, Uttar Pradesh", desc: "Ancient temple dedicated to Lord Shiva, established by Lord Kusha. | भगवान शिव को समर्पित प्राचीन मंदिर, जिसकी स्थापना लव-कुश ने की थी।" },
@@ -121,7 +118,59 @@ const templeData = [
     { file: "Lepakshi Veerabhadra Temple.jpg", name: "Veerabhadra Temple", loc: "Lepakshi, Andhra Pradesh", desc: "Known for its hanging pillar and magnificent Vijayanagara architectural style. | अपने लटकते स्तंभ और शानदार विजयनगर वास्तुकला शैली के लिए जाना जाता है।" },
     { file: "Srikalahasti Temple.jpg", name: "Srikalahasti Temple", loc: "Srikalahasti, Andhra Pradesh", desc: "An ancient Shiva temple known as the Kailash of the South. | एक प्राचीन शिव मंदिर जिसे दक्षिण के कैलाश के रूप में जाना जाता है।" },
     { file: "Birla Mandir — Hyderabad.jpg", name: "Birla Mandir", loc: "Hyderabad, Telangana", desc: "A majestic marble temple dedicated to Lord Venkateswara. | भगवान वेंकटेश्वर को समर्पित एक राजसी संगमरमर का मंदिर।" },
-    { file: "Yadadri Lakshmi Narasimha Temple.jpg", name: "Yadadri Temple", loc: "Yadadri, Telangana", desc: "A grand renovated cave temple dedicated to Lord Narasimha. | भगवान नरसिंह को समर्पित एक भव्य पुनर्निर्मित गुफा मंदिर।" }
+    { file: "Yadadri Lakshmi Narasimha Temple.jpg", name: "Yadadri Temple", loc: "Yadadri, Telangana", desc: "A grand renovated cave temple dedicated to Lord Narasimha. | भगवान नरसिंह को समर्पित एक भव्य पुनर्निर्मित गुफा मंदिर।" },
+    { file: "Thiruchendur Murugan Temple.jpg", name: "Thiruchendur Murugan Temple", loc: "Thiruchendur, Tamil Nadu", desc: "A famous shore temple dedicated to Lord Murugan. | भगवान मुरुगन को समर्पित एक प्रसिद्ध तटीय मंदिर।" },
+    { file: "Virupaksha Temple — Hampi.jpg", name: "Virupaksha Temple", loc: "Hampi, Karnataka", desc: "An ancient magnificent Shiva temple in the ruins of Vijayanagara. | विजयनगर के खंडहरों में स्थित भगवान शिव का एक प्राचीन और शानदार मंदिर।" },
+    { file: "Eklingji Temple.jpg", name: "Eklingji Temple", loc: "Udaipur, Rajasthan", desc: "A complex of 108 temples dedicated to Lord Shiva. | भगवान शिव को समर्पित 108 मंदिरों का एक परिसर।" },
+    { file: "Karni Mata Temple — Deshnok.jpg", name: "Karni Mata Temple", loc: "Deshnok, Rajasthan", desc: "The famous rat temple dedicated to Goddess Karni Mata. | देवी करणी माता को समर्पित प्रसिद्ध चूहों वाला मंदिर।" },
+    { file: "Mahalakshmi Temple — Kolhapur.jpg", name: "Mahalakshmi Temple", loc: "Kolhapur, Maharashtra", desc: "A revered Shakti Peetha dedicated to Goddess Mahalakshmi (Ambabai). | देवी महालक्ष्मी (अंबाबाई) को समर्पित एक पूजनीय शक्तिपीठ।" },
+    { file: "Hatkoti Temple.jpg", name: "Hatkoti Temple", loc: "Hatkoti, Himachal Pradesh", desc: "An ancient temple dedicated to Goddess Mahishasuramardini. | देवी महिषासुरमर्दिनी को समर्पित एक प्राचीन मंदिर।" },
+    { file: "Madan Kamdev Temple — Assam.jpg", name: "Madan Kamdev Temple", loc: "Baihata, Assam", desc: "Known as the Khajuraho of Assam, featuring ancient archaeological ruins. | असम का खजुराहो, जो अपने प्राचीन पुरातात्विक खंडहरों के लिए जाना जाता है।" },
+    { file: "Padmanabhaswamy.jpg", name: "Padmanabhaswamy Temple", loc: "Thiruvananthapuram, Kerala", desc: "The richest Hindu temple in the world dedicated to Lord Vishnu. | भगवान विष्णु को समर्पित दुनिया का सबसे अमीर हिंदू मंदिर।" },
+    { file: "Murudeshwar.jpg", name: "Murudeshwar Temple", loc: "Murdeshwar, Karnataka", desc: "Famous for the world's second-tallest Shiva statue on the Arabian Sea coast. | अरब सागर के तट पर स्थित दुनिया की दूसरी सबसे ऊंची शिव प्रतिमा के लिए प्रसिद्ध।" },
+    { file: "Arunachaleswarar.jpg", name: "Arunachaleswarar Temple", loc: "Tiruvannamalai, Tamil Nadu", desc: "A massive temple dedicated to Lord Shiva, associated with the element of fire. | अग्नि तत्व से जुड़े भगवान शिव को समर्पित एक विशाल मंदिर।" },
+    { file: "Siddhivinayak Mumbai.jpg", name: "Siddhivinayak Temple", loc: "Mumbai, Maharashtra", desc: "One of the most famous and visited Ganesha temples in India. | भारत के सबसे प्रसिद्ध और दर्शन किए जाने वाले गणेश मंदिरों में से एक।" },
+    { file: "Khatu Shyam.jpg", name: "Khatu Shyam Temple", loc: "Khatushyamji, Rajasthan", desc: "A highly revered pilgrimage site dedicated to Lord Krishna's devotee, Barbarika. | भगवान कृष्ण के भक्त बर्बरीक (खाटू श्याम) को समर्पित एक अत्यधिक पूजनीय तीर्थस्थल।" },
+    { file: "Dakshineswar Kali.jpg", name: "Dakshineswar Kali Temple", loc: "Kolkata, West Bengal", desc: "A famous Kali temple located on the eastern bank of the Hooghly River. | हुगली नदी के पूर्वी तट पर स्थित एक प्रसिद्ध काली मंदिर।" },
+    { file: "Ambaji.jpg", name: "Ambaji Temple", loc: "Ambaji, Gujarat", desc: "A major Shakti Peetha where there is no idol, but a holy Yantra is worshipped. | एक प्रमुख शक्तिपीठ जहां कोई मूर्ति नहीं है, बल्कि एक पवित्र यंत्र की पूजा होती है।" },
+    { file: "Varadharaja Perumal Temple — Kanchipuram.jpg", name: "Varadharaja Perumal Temple", loc: "Kanchipuram, Tamil Nadu", desc: "A famous Vishnu temple and one of the 108 Divya Desams. | एक प्रसिद्ध विष्णु मंदिर और 108 दिव्य देशमों में से एक।" },
+    { file: "Chennakeshava Temple — Belur.jpg", name: "Chennakeshava Temple", loc: "Belur, Karnataka", desc: "A marvel of Hoysala architecture dedicated to Lord Vishnu. | भगवान विष्णु को समर्पित होयसल वास्तुकला का एक अजूबा।" },
+    { file: "Kaleshwaram Mukteswara Temple.jpg", name: "Kaleshwaram Mukteswara Temple", loc: "Kaleshwaram, Telangana", desc: "Unique temple featuring two Shiva Lingas on a single pedestal. | एक ही वेदी पर दो शिवलिंगों वाला एक अनूठा मंदिर।" },
+    { file: "Shrinathji Temple — Nathdwara.jpg", name: "Shrinathji Temple", loc: "Nathdwara, Rajasthan", desc: "A major pilgrimage site dedicated to Shrinathji, a form of Lord Krishna. | भगवान कृष्ण के स्वरूप श्रीनाथजी को समर्पित एक प्रमुख तीर्थस्थल।" },
+    { file: "Aundha Nagnath Temple.jpg", name: "Aundha Nagnath Temple", loc: "Hingoli, Maharashtra", desc: "An ancient temple believed to be the eighth of the 12 Jyotirlingas. | एक प्राचीन मंदिर जिसे 12 ज्योतिर्लिंगों में से आठवां माना जाता है।" },
+    { file: "Mansa Devi Temple — Haridwar.jpg", name: "Mansa Devi Temple", loc: "Haridwar, Uttarakhand", desc: "A famous hilltop temple dedicated to Goddess Mansa Devi. | देवी मनसा को समर्पित एक प्रसिद्ध पहाड़ी मंदिर।" },
+    { file: "Peer Kho Temple — Jammu.jpg", name: "Peer Kho Temple", loc: "Jammu, Jammu & Kashmir", desc: "A renowned cave temple dedicated to Lord Shiva. | भगवान शिव को समर्पित एक प्रसिद्ध गुफा मंदिर।" },
+    { file: "Chhatarpur Temple Delhi.jpg", name: "Chhatarpur Temple", loc: "New Delhi", desc: "A magnificent temple complex dedicated to Goddess Katyayani. | देवी कात्यायनी को समर्पित एक शानदार मंदिर परिसर।" },
+    { file: "Sabarimala.jpg", name: "Sabarimala Temple", loc: "Pathanamthitta, Kerala", desc: "A prominent hill shrine dedicated to Lord Ayyappa. | भगवान अय्यप्पा को समर्पित एक प्रमुख पहाड़ी तीर्थस्थल।" },
+    { file: "Brihadeeswarar.jpg", name: "Brihadeeswarar Temple", loc: "Thanjavur, Tamil Nadu", desc: "A UNESCO World Heritage site and a brilliant example of Chola architecture. | यूनेस्को विश्व धरोहर स्थल और चोल वास्तुकला का एक शानदार उदाहरण।" },
+    { file: "Chidambaram Nataraja.jpg", name: "Chidambaram Nataraja Temple", loc: "Chidambaram, Tamil Nadu", desc: "A famous temple where Lord Shiva is worshipped in his dancing form, Nataraja. | प्रसिद्ध मंदिर जहां भगवान शिव की उनके नटराज (नृत्य) रूप में पूजा की जाती है।" },
+    { file: "Brahma Temple Pushkar.jpg", name: "Brahma Temple", loc: "Pushkar, Rajasthan", desc: "One of the very few existing temples dedicated to the Hindu creator-god Brahma. | हिंदू निर्माता भगवान ब्रह्मा को समर्पित बहुत कम मौजूदा मंदिरों में से एक।" },
+    { file: "Shrinathji.jpg", name: "Shrinathji (Balak Form)", loc: "Nathdwara, Rajasthan", desc: "Revered shrine of Lord Krishna as a seven-year-old child. | सात साल के बच्चे (बालक) के रूप में भगवान कृष्ण का पूजनीय मंदिर।" },
+    { file: "Tarapith.jpg", name: "Tarapith", loc: "Birbhum, West Bengal", desc: "A highly revered Tantric Hindu temple dedicated to Goddess Tara. | देवी तारा को समर्पित एक अत्यधिक पूजनीय तांत्रिक हिंदू मंदिर।" },
+    { file: "Dharmasthala Manjunatha Temple — Dharmasthala.jpg", name: "Manjunatha Temple", loc: "Dharmasthala, Karnataka", desc: "An 800-year-old religious institution housing Lord Shiva (Manjunatha). | भगवान शिव (मंजुनाथ) का 800 साल पुराना धार्मिक संस्थान।" },
+    { file: "Udupi Sri Krishna Temple — Udupi.jpg", name: "Udupi Sri Krishna Temple", loc: "Udupi, Karnataka", desc: "A famous Hindu temple dedicated to Lord Krishna and Dvaita matha. | भगवान कृष्ण और द्वैत मठ को समर्पित एक प्रसिद्ध हिंदू मंदिर।" },
+    { file: "Moti Dungri Ganesh.jpg", name: "Moti Dungri Ganesh", loc: "Jaipur, Rajasthan", desc: "A popular Ganesha temple situated on a small hill in Jaipur. | जयपुर में एक छोटी पहाड़ी पर स्थित एक लोकप्रिय गणेश मंदिर।" },
+    { file: "Mehandipur Balaji Temple.jpg", name: "Mehandipur Balaji Temple", loc: "Dausa, Rajasthan", desc: "A famous temple dedicated to Lord Hanuman, known for ritualistic healing. | भगवान हनुमान को समर्पित एक प्रसिद्ध मंदिर, जो अनुष्ठानिक उपचार के लिए जाना जाता है।" },
+    { file: "Ganpatipule Temple.jpg", name: "Ganpatipule Temple", loc: "Ratnagiri, Maharashtra", desc: "A 400-year-old Ganesha temple situated on a spectacular beach. | एक शानदार समुद्र तट पर स्थित 400 साल पुराना गणेश मंदिर।" },
+    { file: "Chandi Devi Temple — Haridwar.jpg", name: "Chandi Devi Temple", loc: "Haridwar, Uttarakhand", desc: "A highly revered hilltop temple dedicated to Goddess Chandi. | देवी चंडी को समर्पित एक अत्यधिक पूजनीय पहाड़ी मंदिर।" },
+    { file: "Rajiv Lochan Temple — Rajim.jpg", name: "Rajiv Lochan Temple", loc: "Rajim, Chhattisgarh", desc: "An ancient temple dedicated to Lord Vishnu, located at the Triveni Sangam. | त्रिवेणी संगम पर स्थित भगवान विष्णु को समर्पित एक प्राचीन मंदिर।" },
+    { file: "Laxminarayan Temple - Delhi.jpg", name: "Laxminarayan Temple (Birla Mandir)", loc: "New Delhi", desc: "Also known as Birla Mandir, dedicated to Lord Vishnu and Goddess Lakshmi. | इसे बिड़ला मंदिर भी कहा जाता है, जो भगवान विष्णु और देवी लक्ष्मी को समर्पित है।" },
+    { file: "Udupi Krishna.jpg", name: "Udupi Krishna Matha", loc: "Udupi, Karnataka", desc: "The historic Sri Krishna Matha known for its unique 'Kanakana Kindi' viewing window. | ऐतिहासिक श्री कृष्ण मठ जो अपनी अनूठी 'कनकन किंडी' (दर्शन खिड़की) के लिए जाना जाता है।" },
+    { file: "Srirangam.jpg", name: "Sri Ranganathaswamy Temple", loc: "Srirangam, Tamil Nadu", desc: "One of the most illustrious Vaishnava temples in South India. | दक्षिण भारत के सबसे शानदार वैष्णव मंदिरों में से एक।" },
+    { file: "Shirdi.jpg", name: "Shirdi Sai Baba Temple", loc: "Shirdi, Maharashtra", desc: "The famous pilgrimage site and resting place of the revered spiritual leader Sai Baba. | श्रद्धेय आध्यात्मिक गुरु साईं बाबा का प्रसिद्ध तीर्थस्थल और विश्राम स्थल।" },
+    { file: "Salasar Balaji.jpg", name: "Salasar Balaji Temple", loc: "Churu, Rajasthan", desc: "A prominent place of worship for Lord Hanuman devotees. | भगवान हनुमान के भक्तों के लिए पूजा का एक प्रमुख स्थान।" },
+    { file: "Rajrappa Chhinnamasta.jpg", name: "Rajrappa Chhinnamasta Temple", loc: "Ramgarh, Jharkhand", desc: "A famous Shakti temple dedicated to the headless Goddess Chhinnamasta. | बिना सिर वाली देवी छिन्नमस्ता को समर्पित एक प्रसिद्ध शक्ति मंदिर।" },
+    { file: "Vishnupad — Gaya.jpg", name: "Vishnupad Temple", loc: "Gaya, Bihar", desc: "An ancient temple containing a 40 cm long footprint of Lord Vishnu. | एक प्राचीन मंदिर जिसमें भगवान विष्णु का 40 सेमी लंबा पदचिह्न है।" },
+    { file: "Kapaleeshwarar Temple — Chennai.jpg", name: "Kapaleeshwarar Temple", loc: "Chennai, Tamil Nadu", desc: "A masterpiece of Dravidian architecture dedicated to Lord Shiva. | भगवान शिव को समर्पित द्रविड़ वास्तुकला का एक उत्कृष्ट उदाहरण।" },
+    { file: "Jagannath Temple — Puri.jpg", name: "Jagannath Temple", loc: "Puri, Odisha", desc: "A famous, sacred Hindu temple dedicated to Lord Jagannath and a part of the Char Dham. | भगवान जगन्नाथ को समर्पित एक प्रसिद्ध, पवित्र हिंदू मंदिर और चार धाम का एक हिस्सा।" },
+    { file: "Kataragama Temple.jpg", name: "Kataragama Temple", loc: "Kataragama, Sri Lanka", desc: "A temple complex dedicated to Buddhist guardian deity Kataragama deviyo and Hindu God Murugan. | बौद्ध रक्षक देवता कतरगामा देवियो और हिंदू देवता मुरुगन को समर्पित एक मंदिर परिसर।" },
+    { file: "Chatteshwari Temple — Chattogram.jpg", name: "Chatteshwari Temple", loc: "Chattogram, Bangladesh", desc: "A highly revered Shakti Peetha located in the center of Chittagong city. | चटगाँव शहर के केंद्र में स्थित एक अत्यधिक पूजनीय शक्तिपीठ।" },
+    { file: "Tara Tarini Temple — Ganjam.jpg", name: "Tara Tarini Temple", loc: "Ganjam, Odisha", desc: "One of the oldest pilgrimage centers of the Hindu mother goddess on the Kumari hills. | कुमारी पहाड़ियों पर हिंदू देवी माँ के सबसे पुराने तीर्थ केंद्रों में से एक।" },
+    { file: "Munneswaram Temple — Chilaw.jpg", name: "Munneswaram Temple", loc: "Chilaw, Sri Lanka", desc: "An important regional Hindu temple complex in Sri Lanka that has been in existence since 1000 CE. | श्रीलंका में एक महत्वपूर्ण क्षेत्रीय हिंदू मंदिर परिसर जो 1000 ईस्वी से अस्तित्व में है।" },
+    { file: "Changu Narayan Temple — Bhaktapur.jpg", name: "Changu Narayan Temple", loc: "Bhaktapur, Nepal", desc: "Considered the oldest temple in Nepal, dedicated to Lord Vishnu. | इसे नेपाल का सबसे पुराना मंदिर माना जाता है, जो भगवान विष्णु को समर्पित है।" },
+    { file: "Maa Samaleswari Temple — Sambalpur.jpg", name: "Maa Samaleswari Temple", loc: "Sambalpur, Odisha", desc: "A prominent 16th-century temple dedicated to Goddess Samaleswari. | देवी समलेश्वरी को समर्पित 16वीं सदी का एक प्रमुख मंदिर।" },
+    { file: "Adinath Temple — Maheshkhali.jpg", name: "Adinath Temple", loc: "Maheshkhali, Bangladesh", desc: "A Shiva temple located on the summit of the Mainak Hill. | मैनाक पहाड़ी की चोटी पर स्थित एक शिव मंदिर।" },
+    { file: "Pashupatinath Temple — Kathmandu.jpg", name: "Pashupatinath Temple", loc: "Kathmandu, Nepal", desc: "A famous, sacred Hindu temple complex dedicated to Lord Pashupatinath (Shiva) on the Bagmati River. | बागमती नदी के तट पर भगवान पशुपतिनाथ (शिव) को समर्पित एक प्रसिद्ध, पवित्र हिंदू मंदिर परिसर।" }
 ];
 
 function App() {
@@ -160,7 +209,7 @@ function App() {
 
             <header className="hero">
                 <h1 className="text-2-5d">MANDIR DARSHAN</h1>
-                <p className="subtitle">Explore the sacred temples of India</p>
+                <p className="subtitle">Explore the sacred temples of India & Beyond</p>
                 
                 <div className="search-container">
                     <span>🔍</span>
